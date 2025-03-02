@@ -2,6 +2,5 @@ LinkedIn
 
 1. Career Networking: Build professional connections.
 2. Job Listings and Applications: Search and apply for job postings.
-3. Content Sharing: Share professional content and interact.
-4. Skills and Endorsements: List skills and get endorsements.
-5. Professional Learning: Access courses and resources to enhance skills.
+3. Skills and Endorsements: List skills and get endorsements.
+4. Professional Learning: Access courses and resources to enhance skills.
