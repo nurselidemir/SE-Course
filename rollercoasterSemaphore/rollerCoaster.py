@@ -41,3 +41,35 @@ class Yolcu(threading.Thread):
         while True:
             time.sleep(random.uniform(0.1, 1))
             self.trene_bin() 
+class Tren(threading.Thread):
+    def _init_(self, kapasite, tur_sayisi):
+        super()._init_()
+        self.kapasite = kapasite
+        self.tur_sayisi = tur_sayisi
+
+    def run(self):
+        global tren_yolcu_sayisi
+        for tur in range(1, self.tur_sayisi + 1):
+           
+            for _ in range(self.kapasite):
+                sira_semaforu.release()
+
+            
+            binis_tamamlandi.acquire()
+
+            
+            print(f"Tren {tur}. turda şu yolcularla hareket ediyor: {trendeki_yolcular}")
+            time.sleep(random.uniform(0.5, 1))  
+
+            
+            for _ in range(self.kapasite):
+                inis_tamamlandi.release()
+
+           
+            with tren_kilidi:
+                tren_yolcu_sayisi = 0
+                trendeki_yolcular.clear()
+
+        print("Tren bakım için durduruldu.")
+
+
