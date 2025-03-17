@@ -69,7 +69,36 @@ class Tren(threading.Thread):
             with tren_kilidi:
                 tren_yolcu_sayisi = 0
                 trendeki_yolcular.clear()
+                
 
         print("Tren bakım için durduruldu.")
 
+if __name__ == "__main__":
+    
+    yolcu_sayisi = int(input("Yolcu sayısını girin: "))
+    kapasite = int(input("Tren kapasitesini girin: "))
+    tur_sayisi = int(input("Tren tur sayısını girin: "))
+
+   
+    if kapasite > yolcu_sayisi:
+        print("Tren kapasitesi yolcu sayısından fazla olamaz.")
+        exit(1)
+
+   
+    tren = Tren(kapasite, tur_sayisi)
+    tren.start()
+
+
+    yolcular = []
+    for i in range(1, yolcu_sayisi + 1):
+        yolcu = Yolcu(i, kapasite)
+        yolcular.append(yolcu)
+        yolcu.start()
+
+    
+    tren.join()
+
+    
+    for yolcu in yolcular:
+        yolcu.join()
 
